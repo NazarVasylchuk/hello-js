@@ -7,7 +7,7 @@ function myAdd() {
     let A = elem_A.value;
     let B = elem_B.value;
     let R = Number(A) + Number(B);
-    elem_R.innerHTML =R;
+    elem_R.innerHTML = R;
 }
 
 

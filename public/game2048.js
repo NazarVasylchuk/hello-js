@@ -1,10 +1,10 @@
 const boardSize = 4;
 
 var board = [
-    [ 0, 0, 2, 4 ],
-    [ 2, 0, 2, 0 ],
-    [ 0, 2, 0, 2 ],
-    [ 0, 2, 0, 0 ],
+    [ 0, 0, 0, 0 ],
+    [ 0, 0, 0, 0 ],
+    [ 0, 0, 0, 0 ],
+    [ 0, 0, 0, 0 ],
 ];
 
 var elBoard = document.querySelectorAll( 'table#game2048 td' );
@@ -18,13 +18,13 @@ function drawBoard() {
             } else {
              elBoard[ i ].innerText = '';            // очистити
             }
-            
+            let cl = 'c-' + board[ r ][ c ];
+            elBoard[ i ].className = cl;
          } 
      }
         
 } 
 
-drawBoard();
 
 function mover( a ) {                                        // a :: [ ?, ?, ?, ?]
     for ( let c=0; c < boardSize-1; c++ ) {               // 1) всі клітинки без останньої ( c )
@@ -47,6 +47,9 @@ function mover( a ) {                                        // a :: [ ?, ?, ?, 
                 cEq = cR;
                 break;
             }
+            if ( a[ cR ] > 0 ) {
+                break;
+            }
         } 
         if ( cEq != -1 ){                   //      3.1) ( c ) += ( cEq ); ( cEq = 0 )  
             a[ c ] += a[ cEq ];
@@ -56,20 +59,30 @@ function mover( a ) {                                        // a :: [ ?, ?, ?, 
     return a;
 }   
 
+function onKey( e ){
+    switch ( e.keyCode ){
+        case 37: mvLeft(); break;
+        case 38: mvUp(); break;
+        case 39: mvRight(); break;
+        case 40: mvDown(); break;
+    }
+    nextNumber();
+    drawBoard();
+
+}
+
 function mvLeft() {
     for ( let  r=0; r < boardSize; r++ ){               // всі рядки
     //     let row = board[ r ];                           // взяти конкретний рядок
     //     row = mover( row );                             // рухаєм вліво цей рядок
     //     board[ r ] = row;                               // покласти назад цей рядок
         board[ r ] = mover( board[ r ] );
-    }
-    drawBoard(); //перемалювати
+    }; //перемалювати
 }
 function mvRight(){
     for ( let  r=0; r < boardSize; r++ ) { 
         board[ r ] =  mover( board[ r ].reverse() ).reverse();
     }
-    drawBoard();
 }
 function mvUp() {
     for ( let  c=0; c < boardSize; c++ ) { 
@@ -80,7 +93,6 @@ function mvUp() {
         board[2][c] = a[2];
         board[3][c] = a[3];
     }
-    drawBoard();
 }
 function mvDown() {
     for ( let  c=0; c < boardSize; c++ ) { 
@@ -91,5 +103,37 @@ function mvDown() {
         board[2][c] = a[2];
         board[3][c] = a[3];
     }
-    drawBoard();
 }
+function gameRnd() {
+    let r = Math.random();
+    if ( r > 0.9 ) {
+        return 4;
+     } else{
+            return 2;
+        }
+}
+
+function getZeros() {
+    let a = [];
+    for ( let r=0; r < boardSize; r++ ) {
+        for ( let c=0; c < boardSize; c++ ) {
+            if ( board[ r ][ c ] == 0 ){
+                a.push( [ r, c ] );
+            }
+        }
+    }
+    return a;
+}
+
+function nextNumber() {
+    let a = getZeros();
+    let n = a.length;
+    let i = Math.floor ( n * Math.random() );
+    if ( n >= 0){
+        board[ a[i][0] ][ a[i][1] ] = gameRnd();
+    }
+}
+
+nextNumber();
+nextNumber();
+drawBoard();

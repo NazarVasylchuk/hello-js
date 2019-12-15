@@ -1,0 +1,31 @@
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-image: url('images/bg-move-the-box.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+td{
+    border: 1px solid white;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+td.box-01{
+    background-image: url('images/box-1.png');
+}
+td.box-02{
+    background-image: url('images/box-2.png');
+}
+td.box-03{
+    background-color: brown;
+}
+td.z{
+    background-size: 10% 10%;
+    transition-duration: background-size, 10s ;
+}
+

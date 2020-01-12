@@ -15,16 +15,27 @@ td{
     background-position: center center;
     background-size: cover;
 }
-td.box-1{
+.box-1{
     background-image: url('images/box-1.png');
 }
-td.box-2{
+.box-2{
     background-image: url('images/box-2.png');
 }
-td.box-03{
+.box-03{
     background-color: brown;
+}
+.box-04{
+    background-color: green;
+}
+.box-05{
+    background-color: grey;
+}
+.box-06{
+    background-color: yellow;
 }
  div#buttons{
      text-align: center;
- }
+}
+
+
 

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Move the box</title>
+    <link rel="stylesheet" href="move-the-box.css">
+    <link rel="stylesheet" href="game-base.css">
+    <style>
+    .movebox{
+        position: absolute;
+        z-index: 10;
+        left: 490px;
+        top: 678px;
+        border: 1px solid white;
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        transition: left 500ms linear;
+    }
+    </style>
+</head>
+<body>
+    <table id="move-the-box">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <div id="b1" class="box-1 movebox">
+
+    </div>
+    <button onclick="move()">Move</button>
+    <script>
+        var el = document.getElementById( 'b1' );
+        function move(){
+        el.style.left = '500px';
+        }
+    </script>
+</body>
+</html>

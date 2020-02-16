@@ -15,7 +15,16 @@ td{
     background-position: center center;
     background-size: cover;
 }
-
+.box{
+    border: 1px solid white;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+}
 .box-999 {
     background-color: black;
 }

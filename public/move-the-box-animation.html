@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="move-the-box.css">
     <link rel="stylesheet" href="game-base.css">
     <style>
-    .movebox{
+    /* .movebox{
         position: absolute;
         z-index: 10;
         left: 490px;
@@ -21,22 +21,13 @@
         background-position: center center;
         background-size: cover;
         transition: left 500ms linear;
-    }
+    } */
     </style>
 </head>
 <body>
     <table id="move-the-box">
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
+            <td id="td1"></td>
             <td></td>
             <td></td>
             <td></td>
@@ -97,17 +88,52 @@
             <td></td>
             <td></td>
             <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td id="td2"></td>
         </tr>
     </table>
-    <div id="b1" class="box-1 movebox">
+  
+    <button onclick="testMove()">Click</button>
+    <script src="jquery-3.4.1.min.js"></script>
 
-    </div>
-    <button onclick="move()">Move</button>
     <script>
-        var el = document.getElementById( 'b1' );
-        function move(){
-        el.style.left = '500px';
+        function testMove(){
+            moveBox( '#td1', '#td2', 'box-1');
+            moveBox( '#td2', '#td1', 'box-2');
+        }
+        function moveBox( s, d, b ){
+            let $S = $( s );
+            let $D = $(d);
+            let offS = $S.offset();
+            let offD = $D.offset();
+            let $BOX = $('<div>')
+                .addClass('box')
+                .addClass(b)
+                .css(offS)
+                .appendTo('body')
+            $BOX.animate( offD, 1000, function(){
+                $BOX.remove();
+            });
         }
     </script>
+  
+    <!-- <div id="b1" class="box-1 movebox"> -->
+
+    <!-- </div>
+    <button onclick="move()">Move</button> -->
+    <!-- <script>
+        var el = document.getElementById( 'b1' );
+        function move(){
+        el.style.left = '600px';
+        el.style.top = '500px';
+        }
+    </script> -->
 </body>
 </html>

@@ -7,35 +7,10 @@
     <title>Move the box</title>
     <link rel="stylesheet" href="move-the-box.css">
     <link rel="stylesheet" href="game-base.css">
-    <style>
-    /* .movebox{
-        position: absolute;
-        z-index: 10;
-        left: 490px;
-        top: 678px;
-        border: 1px solid white;
-        width: 80px;
-        height: 80px;
-        text-align: center;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        transition: left 500ms linear;
-    } */
-    </style>
 </head>
 <body>
     <table id="move-the-box">
         <tr>
-            <td id="td1"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
             <td></td>
             <td></td>
             <td></td>
@@ -96,7 +71,16 @@
             <td></td>
             <td></td>
             <td></td>
-            <td id="td2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="box-1"></td>
+            <td></td>
+            <td class="box-2"></td>
+            <td></td>
         </tr>
     </table>
   
@@ -105,35 +89,37 @@
 
     <script>
         function testMove(){
-            moveBox( '#td1', '#td2', 'box-1');
-            moveBox( '#td2', '#td1', 'box-2');
+            moveBox([ 7, 3 ], [ 7, 5 ]);
+            moveBox([ 7, 5 ], [ 7, 3 ]);
+            // moveBox (7, 3, 7, 4);
+            //moveBox ( r1, c1, r2, c2 )
+            // moveBox( '#td2', '#td1', 'box-2');
         }
-        function moveBox( s, d, b ){
-            let $S = $( s );
-            let $D = $(d);
-            let offS = $S.offset();
-            let offD = $D.offset();
+        function moveBox( s, d ){
+             let $S = $(
+                 $( '#move-the-box' )[0]
+                .rows[s[0]]
+                .cells[s[1]]
+                );
+             let $D = $(
+                 $( '#move-the-box' )[0]
+                 .rows[d[0]]
+                 .cells[d[1]]
+             );
+             let offS = $S.offset();
+             let offD = $D.offset();
+             let $B = $S[0].className;
             let $BOX = $('<div>')
                 .addClass('box')
-                .addClass(b)
+                .addClass($B)
                 .css(offS)
                 .appendTo('body')
+            $S[0].className='';
             $BOX.animate( offD, 1000, function(){
                 $BOX.remove();
+                $D[0].className=$B;
             });
         }
     </script>
-  
-    <!-- <div id="b1" class="box-1 movebox"> -->
-
-    <!-- </div>
-    <button onclick="move()">Move</button> -->
-    <!-- <script>
-        var el = document.getElementById( 'b1' );
-        function move(){
-        el.style.left = '600px';
-        el.style.top = '500px';
-        }
-    </script> -->
 </body>
 </html>

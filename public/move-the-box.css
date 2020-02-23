@@ -54,16 +54,20 @@ div#buttons{
     position: absolute;
     top: -300px;
     left: -300px;
-    font-weight: bolder;
     font-size: 20px;
 }
 div#buttons div {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 26px;
-    height: 26px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
+}
+div#buttons div span{
+    color: color;
+    font-weight: bolder;
+    font-size: 20px;
 }
 div#btnU{
     grid-column-start: 2;

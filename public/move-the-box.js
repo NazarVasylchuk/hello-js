@@ -112,13 +112,17 @@ function gravitation() {
     }
 }
 
-function drawBoard() {
-    clearBoom();
-    gravitation();
-    while ( animationCounter>0 ) {
+// clearBoom();
+// gravitation();
+// while ( animationCounter>0 ) {
 
-    };
-    let Boom = boom();
+// };
+// let Boom = boom();
+// if ( Boom ) {
+//     setTimeout( function(){ drawBoard(); }, 2000 );
+// }   
+
+function drawBoard() {
     for ( let r = 0; r < bRow; r++ ) {                // всі рядки
         for ( let c = 0; c < bCol; c++ ){              // всі стовпчики
             let i = bCol * r + c;                   // кожну клітинку 
@@ -128,10 +132,7 @@ function drawBoard() {
                 elBoard[i].className = 'box-' + board[r][c];
             }
         } 
-    }
-    if ( Boom ) {
-        setTimeout( function(){ drawBoard(); }, 2000 );
-    }      
+    }   
 }
 
 
@@ -145,7 +146,6 @@ function boardClick(e){
         selBox = [ r, c ];
     }
 }
-drawBoard();
 
 function moveUp() {
     if ( selBox.length>0 && selBox[1]<bRow+1 ) {

@@ -15,35 +15,72 @@ function mouseOver( e ) {
         $( 'div#buttons' )
             .hide()
             .css( offS );
-        selBox = [ ]
-            
+        selBox = [ ] 
     }
 }
 
 
 function moveUp() {
-    logs( 'UP' );
+    if ( selBox.length>0 && selBox[0]>0 ) {
+    let r = selBox[0];
+    let c = selBox[1];
+    if ( board[r-1][c] == 0 ) {
+                moveCells( [r,c], [r-1,c]);
+                moveBox( [r,c], [r-1,c] );
+            } else {
+                swapCells( [r,c], [r-1,c] );
+                moveBox( [r,c], [r-1,c] );
+                moveBox( [r-1,c], [r,c] );
+            }
+    }
+    selBox = [];
 }
 function moveLeft() {
-    logs( 'LEFT' );
+    if ( selBox.length>0 && selBox[1]>0 ) {
+        let r = selBox[0];
+        let c = selBox[1];
+        if ( board[r][c-1] == 0 ) {
+            moveCells( [r,c], [r,c-1]);
+            moveBox( [r,c], [r,c-1] );
+        } else {
+            swapCells( [r,c], [r-1,c] );
+            moveBox( [r,c], [r,c-1] );
+            moveBox( [r,c-1], [r,c] );
+        }
+    }
+    selBox = [];
 }
 function moveRight() {
-    logs( 'RIGHT' );
+    if ( selBox.length>0 && selBox[1]<bCol-1 ) {
+        let r = selBox[0];
+    let c = selBox[1];
+    if ( board[r][c+1] == 0 ) {
+        moveCells( [r,c], [r,c+1]);
+        moveBox( [r,c+1], [r,c] );
+    } else {
+        swapCells( [r,c], [r,c+1] );
+        moveBox( [r,c], [r,c+1] );
+        moveBox( [r,c+1], [r,c] );
+    }
+    }
+    selBox = [];
 }
 function moveDown() {
-    logs( 'DOWN' );
+    if ( selBox.length>0 && selBox[0]>0 ) {
+        let r = selBox[0];
+        let c = selBox[1];
+        if ( board[r+1][c] == 0 ) {
+                        moveCells( [r,c], [r+1,c]);
+                        moveBox( [r,c], [r+1,c] );
+                    } else {
+                        swapCells( [r,c], [r+1,c] );
+                        moveBox( [r,c], [r+1,c] );
+                        moveBox( [r+1,c], [r,c] );
+                    }
+    }
+    selBox = [];
 }
 function logs( msg ) {
     console.log( msg, selBox );
 }
 
-
-
-// function boardClick(e){
-//     let r = e.target.parentNode.rowIndex;
-//     let c = e.target.cellIndex;
-//     selBox = [];
-//     if( board[r][c] > 0 ) {
-//         selBox = [ r, c ];
-//     }
-// }

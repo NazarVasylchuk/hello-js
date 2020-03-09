@@ -25,7 +25,7 @@ td{
     position: absolute;
 }
 .box-999 {
-    background-color: black;
+    background-image: url('images/explosion.png');;
 }
 .box-1{
     background-image: url('images/box-1.png');
